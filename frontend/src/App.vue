@@ -1,22 +1,20 @@
 <template>
-  <!-- <Menu/> -->
-  <Produit/>
+<div>
+  <div id="nav">
+
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><router-link to="/">Boutique en ligne</router-link></a>
+        <a class="nav-link"><router-link to="/inscription">Inscription</router-link></a>
+        <a class="nav-link"><router-link to="/connexion">Connexion</router-link></a>
+</nav>
+  </div>
+  <router-view/>
+  </div>
 </template>
 
-<script>
-
-// import Menu from './components/Menu/Menu';
-import Produit from './components/Produit/Produit';
 
 
-export default {
-  name: 'App',
-  components : {
-    // Menu,
-    Produit
-  }
-}
-</script>
+
 
 <style>
 #app {
@@ -25,6 +23,22 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #fff;
+  margin: 0px 10px 0px 10px;
+}
+#nav a:hover {
+  text-decoration: none;
+}
+#nav a.router-link-exact-active {
+  color: #29a9ff;
+}
+
 </style>
