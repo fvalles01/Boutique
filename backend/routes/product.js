@@ -11,5 +11,8 @@ router.put('/:id', auth, multer, productController.modifyProduct);
 router.get('/:id', productController.getOneProduct);
 router.delete('/:id', auth, productController.deleteProduct);
 
+/*Get products by userID */
+router.get('/user/:id/products', auth, productController.getProductByUser);
+
 
 module.exports = router;
