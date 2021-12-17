@@ -1,6 +1,6 @@
 <template>
   
-<form v-on:submit.prevent="inscription">
+<form v-on:submit="inscription">
   <div class="container">
     <div class="row justify-content-center">
     <div class="col12">

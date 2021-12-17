@@ -3,7 +3,7 @@
 <div class="row">
     <div v-for="product in products" :key="product._id">
     <div class="card m-2" style="width: 18rem;">
-      <img :src='product.image' class="card-img-top dimensions" alt="...">
+      <img :src='product.imageUrl' class="card-img-top dimensions" alt="...">
     <div class="card-body">
         <h5 class="card-title">{{product.designation}}</h5>
         <p class="card-text">{{product.description}}</p>
