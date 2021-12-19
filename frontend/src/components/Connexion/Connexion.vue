@@ -1,5 +1,6 @@
 <template>
-  
+<div>
+  <MenuVisitor />
 <form v-on:submit="connexion">
   <div class="container">
     <div class="row justify-content-center">
@@ -17,36 +18,42 @@
   </div>
   </div>
 </form>
-
+</div>
 
 </template>
 
 <script>
-import router from '../../router'
-    import axios from "axios"  
+import router from "../../router"
+import axios from "axios"
+import MenuVisitor from "../MenuVisitor/MenuVisitor.vue"
 
     export default {    
         name: "Connexion",
+        components : {
+          MenuVisitor
+        },
         data(){
         return {
           email:"",
           password:"",
           user: {
             isSignedIn: true
-          }
-
+          },
+           
         }
-      },   
-           methods: {
-                    connexion() {
-                      axios.post("http://localhost:3000/api/auth/login", {
-                        email: this.email,
-                        password: this.password,
-                      })
-                        router.push("/")
-                    },
-                  },  
-            }    
+
+      },
+         
+      methods: {
+              connexion() {
+                axios.post("http://localhost:3000/api/auth/login", {
+                  email: this.email,
+                  password: this.password,
+                })
+                  router.push("/")
+              },
+            },
+      }    
 </script>
 
 

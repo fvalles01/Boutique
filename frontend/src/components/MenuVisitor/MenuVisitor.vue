@@ -1,29 +1,24 @@
 <template>
-
-  <!-- <div id="nav">
-
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div id="nav">
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="#"><router-link to="/">Boutique en ligne</router-link></a>
-        <a v-if="user.isSignedIn" class="nav-link"><router-link to="/inscription">Inscription</router-link></a>
-        <a v-if="user.isSignedIn" class="nav-link"><router-link to="/connexion">Connexion</router-link></a>
-        <a v-else class="nav-link"><router-link to="/deconnexion">Déconnexion</router-link></a>
-</nav> -->
-  
-  <router-view></router-view>
+        <a class="nav-link"><router-link to="/inscription">Inscription</router-link></a>
+        <a class="nav-link"><router-link to="/connexion">Connexion</router-link></a>
+        </nav>
+    </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  components: {
-  }
+    name: "MenuVisitor",
+    data () {
+      return {}
+    }
 }
 </script>
 
-
-
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,5 +1,6 @@
 <template>
-  
+<div>
+  <MenuVisitor/>
 <form v-on:submit="inscription">
   <div class="container">
     <div class="row justify-content-center">
@@ -16,16 +17,21 @@
     </div>
   </div>
   </div>
+  
 </form>
 
 
-
+</div>
 </template>
 
 <script>
-    import axios from "axios"   
+    import axios from "axios"
+    import MenuVisitor from "../MenuVisitor/MenuVisitor.vue"
     export default {    
         name: "Inscription",
+        components:{
+          MenuVisitor
+        },
         data(){
         return {
           email:"",
