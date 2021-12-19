@@ -1,21 +1,27 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 // import Home from '../views/Home.vue'
-import Produit from '../components/Produit/Produit.vue'
-import Inscription from '../components/Inscription/Inscription.vue'
-import Connexion from '../components/Connexion/Connexion.vue'
+// import Produit from '../components/Produit/ProduitVisitor.vue'
+// import Inscription from '../components/Inscription/Inscription.vue'
+// import Connexion from '../components/Connexion/Connexion.vue'
+
+import Home from '@/views/Home.vue';
+import Login from '@/views/Login.vue';
+import Sale from '@/views/Sale.vue';
 
 
 
 const routes = [
   {
     path: '/',
-    name: 'produit',
-    component: Produit
+    name: 'Home',
+    component: Home
   },
   {
-    path: '/inscription',
-    name: 'inscription',
-    component: Inscription
+    path: '/sale',
+    name: 'Sale',
+    component: Sale,
+    props: true 
+
 
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -23,15 +29,15 @@ const routes = [
     // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/connexion',
-    name: 'connexion',
-    component: Connexion
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   mode: "history",
   routes
 })
