@@ -1,11 +1,12 @@
 <template>
 <div>
-    <div id="nav">
+    <!-- <div id="nav">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><router-link to="/">Boutique en ligne</router-link></a>
-        <a class="nav-link"><router-link to="/login">Espace utilisateur</router-link></a>
+        <router-link class="navbar-brand" to="/">Boutique en ligne</router-link>
+        <router-link class="nav-link" to="/login">Espace utilisateur</router-link>
         </nav>
-    </div>
+    </div> -->
+
   <div class="container">
   <div class="card">
     <h1 class="card__title" v-if="mode == 'login'">Connexion</h1>
@@ -18,30 +19,31 @@
     <div class="form-row_position">
       <input v-model="password" class="form-row__input" type="password" placeholder="Mot de passe"/>
     </div>
-    <div class="form-row_position" v-if="mode == 'login' && status == 'error_login'">
-      Adresse mail et/ou mot de passe invalide
+    <div class="form-row_position" v-if="mode == 'login'">
+      <!-- Adresse mail et/ou mot de passe invalide -->
     </div>
-    <div class="form-row_position" v-if="mode == 'create' && status == 'error_create'">
-      Adresse mail déjà utilisée
+    <div class="form-row_position" v-if="mode == 'create'">
+      <!-- Adresse mail déjà utilisée -->
     </div>
     <div class="form-row_position">
       <button @click="login()" class="btn btn-primary" :class="{'button--disabled' : !validatedFields}" v-if="mode == 'login'">
         <span v-if="status == 'loading'">Connexion en cours...</span>
         <span v-else>Connexion</span>
       </button>
-      <button @click="createAccount()" class="btn btn-primary" :class="{'button--disabled' : !validatedFields}" v-else>
+      <button @click="register()" class="btn btn-primary" :class="{'button--disabled' : !validatedFields}" v-else>
         <span v-if="status == 'loading'">Création en cours...</span>
         <span v-else>Créer mon compte</span>
       </button>
     </div>
   </div>
   </div>
+
   </div>
 </template>
 
 <script>
-
-import { mapState } from 'vuex'
+import axios from 'axios'
+import router from '../router'
 
 export default {
   name: 'Login',
@@ -49,21 +51,19 @@ export default {
     return {
       mode: 'login',
       email: '',
-      prenom: '',
-      nom: '',
       password: '',
     }
   },
-  mounted: function () {
-    if (this.$store.state.user.userId != -1) {
-      this.$router.push('/Sale');
-      return ;
-    }
-  },
+//   mounted: function () {
+//     if (this.$store.state.user.userId != -1) {
+//       this.$router.push('/Sale');
+//       return ;
+//     }
+//   },
   computed: {
     validatedFields: function () {
       if (this.mode == 'create') {
-        if (this.email != "" && this.prenom != "" && this.nom != "" && this.password != "") {
+        if (this.email != "" && this.password != "") {
           return true;
         } else {
           return false;
@@ -76,7 +76,6 @@ export default {
         }
       }
     },
-    ...mapState(['status'])
   },
   methods: {
     switchToCreateAccount: function () {
@@ -85,31 +84,31 @@ export default {
     switchToLogin: function () {
       this.mode = 'login';
     },
-    login: function () {
-      const self = this;
-      this.$store.dispatch('login', {
-        email: this.email,
-        password: this.password,
-      }).then(function () {
-        self.$router.push('/Sale');
-      }, function (error) {
-        console.log(error);
-      })
+    async login() {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/login",
+        {
+          email: this.email,
+          password: this.password,
+        }
+      );
+      localStorage.setItem("token", response.data.token);
+      router.push("/sale");
     },
-    createAccount: function () {
-      const self = this;
-      this.$store.dispatch('createAccount', {
-        email: this.email,
-        nom: this.nom,
-        prenom: this.prenom,
-        password: this.password,
-      }).then(function () {
-        self.login();
-      }, function (error) {
-        console.log(error);
-      })
-    },
-  }
+
+     async register() {
+      await axios.post(
+        "http://localhost:3000/api/auth/signup",
+        {
+          email: this.email,
+          password: this.password,
+        },
+      ),
+    location.reload()
+  },
+},
+        
+
 }
 </script>
 
@@ -120,7 +119,6 @@ export default {
   gap:16px;
   flex-wrap: wrap;
 }
-
 .form-row__input {
   padding:8px;
   border: none;
@@ -132,7 +130,6 @@ export default {
   min-width: 100px;
   color: black;
 }
-
 .form-row__input::placeholder {
   color:#aaaaaa;
 }
@@ -140,5 +137,7 @@ export default {
   color: rgb(0, 119, 230);
   cursor: pointer;
 }
-
+.navbar a{
+    text-decoration: none;
+}
 </style>
