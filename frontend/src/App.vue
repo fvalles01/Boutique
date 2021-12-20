@@ -1,24 +1,20 @@
 <template>
-
-  <!-- <div id="nav">
-
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><router-link to="/">Boutique en ligne</router-link></a>
-        <a v-if="user.isSignedIn" class="nav-link"><router-link to="/inscription">Inscription</router-link></a>
-        <a v-if="user.isSignedIn" class="nav-link"><router-link to="/connexion">Connexion</router-link></a>
-        <a v-else class="nav-link"><router-link to="/deconnexion">Déconnexion</router-link></a>
-</nav> -->
-  
+  <div>
+  <Navigation/>
   <router-view></router-view>
+  </div>
 </template>
 
 <script>
 
+import Navigation from './components/Navigation.vue'
 export default {
   name: 'App',
   components: {
-  }
+    Navigation
+    },
 }
+
 </script>
 
 
@@ -31,11 +27,9 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
 #nav {
   padding: 30px;
 }
-
 #nav a {
   font-weight: bold;
   color: #fff;
@@ -47,5 +41,4 @@ export default {
 #nav a.router-link-exact-active {
   color: #29a9ff;
 }
-
 </style>

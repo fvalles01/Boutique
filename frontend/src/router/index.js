@@ -9,18 +9,22 @@ import Login from '@/views/Login.vue';
 import Sale from '@/views/Sale.vue';
 
 
-
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
   },
+  // {
+  //   path: '/arnaud',
+  //   name: 'Home',
+  //   component: Home
+  // },
   {
     path: '/sale',
     name: 'Sale',
-    component: Sale,
-    props: true 
+    component: Sale
+  
 
 
     // route level code-splitting
