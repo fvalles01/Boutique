@@ -51,7 +51,7 @@ export default {
     return {
       mode: 'login',
       email: '',
-      password: '',
+      password: ''
     }
   },
 //   mounted: function () {
