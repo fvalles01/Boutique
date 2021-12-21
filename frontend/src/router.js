@@ -19,11 +19,11 @@ const routes = [
     component: Home,
   },
   {
-    path: "/connexion",
+    path: "/login",
     component: Login,
   },
   {
-    path: "/inscription",
+    path: "/register",
     component: Register,
   },
   {
@@ -59,19 +59,16 @@ const router = createRouter({
 
 export default router;
 
-
-
-
 router.beforeEach((to, from, next) => {
-    const publicPages = ['/connexion', '/inscription', '/'];
-    const authRequired = !publicPages.includes(to.path);
-    const loggedIn = localStorage.getItem('user');
-  
-    // trying to access a restricted page + not logged in
-    // redirect to login page
-    if (authRequired && !loggedIn) {
-      next('/connexion');
-    } else {
-      next();
-    }
-  });
+  const publicPages = ['/login', '/register', '/home'];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('user');
+
+  // trying to access a restricted page + not logged in
+  // redirect to login page
+  if (authRequired && !loggedIn) {
+    next('/login');
+  } else {
+    next();
+  }
+});
