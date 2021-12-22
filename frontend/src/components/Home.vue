@@ -46,3 +46,12 @@ export default {
   },
 };
 </script>
+<style>
+.dimensions{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+
+</style>

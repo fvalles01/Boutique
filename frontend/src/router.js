@@ -7,16 +7,24 @@ const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")
 const BoardModerator = () => import("./components/BoardModerator.vue")
 const BoardUser = () => import("./components/BoardUser.vue")
+const contact = () => import("./components/Contact.vue")
 
 const routes = [
   {
     path: "/",
     name: "home",
     component: Home,
+    meta: {
+      title: "Home Page - Example App",
+    },
   },
   {
     path: "/home",
     component: Home,
+    meta: {
+      title: "Home Page - Example App",
+    },
+
   },
   {
     path: "/login",
@@ -50,6 +58,13 @@ const routes = [
     // lazy-loaded
     component: BoardUser,
   },
+  {
+    path: "/contact",
+    name: "contact",
+    // lazy-loaded
+    component: contact,
+  }
+
 ];
 
 const router = createRouter({
@@ -60,7 +75,7 @@ const router = createRouter({
 export default router;
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/login', '/register', '/home'];
+  const publicPages = ['/login', '/register', '/home', '/contact'];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('user');
 

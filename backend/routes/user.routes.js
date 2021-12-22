@@ -1,5 +1,7 @@
 const { authJwt } = require("../middlewares");
 const controller = require("../controllers/user.controller");
+const multer = require('../middlewares/multer-config');
+
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -10,9 +12,9 @@ module.exports = function(app) {
     next();
   });
 
-  app.get("/api/test/all", controller.allAccess);
+  app.get("/api/products/all", controller.allAccess);
 
-  app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
+  app.get("/api/products/user", [authJwt.verifyToken], controller.userBoard);
 
   app.get(
     "/api/test/mod",
@@ -25,4 +27,6 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+  app.post('/api/products/all',[authJwt.verifyToken], multer, controller.userPostProduct);
+
 };

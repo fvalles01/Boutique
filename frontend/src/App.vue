@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a href="/" class="navbar-brand">Boutique en ligne</a>
+      <a href="/home" class="navbar-brand">Boutique en ligne</a>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/home" class="nav-link">
-           Accueil
+          <router-link to="/" class="nav-link">
+           Espace VIP
           </router-link>
         </li>
         <li v-if="showAdminBoard" class="nav-item">
@@ -30,20 +30,29 @@
             Connexion
           </router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/contact" class="nav-link">
+            contact
+          </router-link>
+        </li>
       </div>
-
       <div v-if="currentUser" class="navbar-nav ml-auto">
         <li class="nav-item">
           <router-link to="/profile" class="nav-link">
-            <font-awesome-icon icon="user" />
             {{ currentUser.username }}
           </router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" @click.prevent="logOut">
-            <font-awesome-icon icon="sign-out-alt" /> Déconnexion
+             Déconnexion
           </a>
         </li>
+        <li class="nav-item">
+          <router-link to="/contact" class="nav-link">
+            contact
+          </router-link>
+        </li>
+
       </div>
     </nav>
 
@@ -55,6 +64,14 @@
 
 <script>
 export default {
+  watch: {
+    $route: {
+      immediate: true,
+      handler(to) {
+        document.title = to.meta.title || "Some Default Title";
+      },
+    },
+  },
   computed: {
     currentUser() {
       return this.$store.state.auth.user;

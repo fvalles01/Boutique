@@ -126,7 +126,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // app.use(bodyParser.json());
 
-// app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // app.use('/api/product', productRoutes);
 // app.use('/api/auth', userRoutes);
@@ -134,3 +134,4 @@ app.use(express.urlencoded({ extended: true }));
 // routes
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
+require('./routes/email.routes')(app);
