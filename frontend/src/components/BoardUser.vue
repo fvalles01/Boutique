@@ -62,7 +62,6 @@ export default {
   data() {
     const schema = yup.object().shape({
       designation: yup.string().required("Veuillez indiquer une désignation !"),
-      // imageUrl: yup.string().required("Veuillez insérer une image !"),
       price: yup.string().required("Renseignez un prix pour votre produit !"),
       description: yup.string().required("Veuillez renseigner une description !"),
     });

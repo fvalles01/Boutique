@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-12">
     <div class="card card-container">
-      <Form  @submit="sendMail" :validation-schema="schema" method="post">
+      <Form @submit="sendMail" :validation-schema="schema">
         <div class="form-group">
           <label for="name">Votre nom :</label>
           <Field v-model="name" name="name" type="text" class="form-control" />
@@ -18,9 +18,14 @@
           <ErrorMessage name="email" class="error-feedback" />
         </div>
         <div class="form-group">
-          <label for="message">Votre message :</label>
-          <Field v-model="message" name="message" type="text" class="form-control" />
-          <ErrorMessage name="message" class="error-feedback" />
+          <label for="objet">Objet de votre message :</label>
+          <Field v-model="objet" name="objet" type="text" class="form-control" />
+          <ErrorMessage name="objet" class="error-feedback" />
+        </div>
+        <div class="form-group">
+          <label for="demande">Votre message :</label>
+          <Field v-model="demande" name="demande" type="text" class="form-control" />
+          <ErrorMessage name="demande" class="error-feedback" />
         </div>
 
         <div class="form-group">
@@ -48,19 +53,23 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import axios from 'axios';
 
+
+
 export default {
-  name: "Login",
+  name: "contact",
   components: {
     Form,
     Field,
     ErrorMessage,
   },
   data() {
+
     const schema = yup.object().shape({
       name: yup.string().required("Veuillez saisir votre prénom !"),
       lastname: yup.string().required("Veuillez saisir votre nom !"),
       email: yup.string().required("Veuillez saisir une adresse email valide !"),
-      message: yup.string().required("Veuillez saisir votre message !"),
+      objet: yup.string().required("Veuillez saisir l'objet de votre demande!"),
+      demande: yup.string().required("Veuillez saisir votre message !"),
     });
 
     return {
@@ -69,29 +78,20 @@ export default {
       schema,
     };
   },
-  methods:{
-      sendMail(){
-      // Création d'un formData pour l'envoi de l'image
-      let formData = new FormData();
-      formData.append("name", this.name);
-      formData.append("lastname", this.lastname);
-      formData.append("email", this.email);
-      formData.append("message", this.message);
-      // Envoi des données avec axios
-      axios.post('http://localhost:3000/services', formData);
+  methods: {
+ 
+    sendMail() {
+      axios.post('http://localhost:3000/services',{
+        name: this.name,
+        lastname: this.lastname,
+        email: this.email,
+        demande: this.demande
+      });
+      
       location.reload();
-      }
-  },
-  computed: {
-    loggedIn() {
-      return this.$store.state.auth.status.loggedIn;
     },
+    
   },
-//   created() {
-//     if (this.loggedIn) {
-//       this.$router.push("/profile");
-//     }
-//   },
 };
 </script>
 
