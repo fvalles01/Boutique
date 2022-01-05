@@ -85,6 +85,7 @@ export default {
         name: this.name,
         lastname: this.lastname,
         email: this.email,
+        objet: this.objet,
         demande: this.demande
       });
       

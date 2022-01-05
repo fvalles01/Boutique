@@ -32,7 +32,7 @@
         </li>
         <li class="nav-item">
           <router-link to="/contact" class="nav-link">
-            contact
+            Contact
           </router-link>
         </li>
       </div>
@@ -49,7 +49,7 @@
         </li>
         <li class="nav-item">
           <router-link to="/contact" class="nav-link">
-            contact
+            Contact
           </router-link>
         </li>
 
@@ -99,3 +99,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.nav-item a{
+  cursor: pointer;
+}
+</style>

@@ -15,52 +15,73 @@ const routes = [
     name: "home",
     component: Home,
     meta: {
-      title: "Home Page - Example App",
+      title: "Accueil - Boutique",
     },
   },
   {
     path: "/home",
     component: Home,
     meta: {
-      title: "Home Page - Example App",
+      title: "Accueil - Boutique",
     },
 
   },
   {
     path: "/login",
     component: Login,
+    meta: {
+      title: "Connexion",
+    },
   },
   {
     path: "/register",
     component: Register,
+    meta: {
+      title: "Inscription",
+    },
   },
   {
     path: "/profile",
     name: "profile",
+    meta: {
+      title: "Profil",
+    },
     // lazy-loaded
     component: Profile,
   },
   {
     path: "/admin",
     name: "admin",
+    meta: {
+      title: "Admin",
+    },
     // lazy-loaded
     component: BoardAdmin,
   },
   {
     path: "/mod",
     name: "moderator",
+    meta: {
+      title: "Modérateur",
+    },
     // lazy-loaded
     component: BoardModerator,
   },
   {
     path: "/user",
     name: "user",
+    meta: {
+      title: "Utilisateur",
+    },
     // lazy-loaded
     component: BoardUser,
   },
   {
     path: "/contact",
     name: "contact",
+    meta: {
+      title: "Contact",
+    },
     // lazy-loaded
     component: contact,
   }
