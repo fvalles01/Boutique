@@ -8,10 +8,11 @@ const BoardAdmin = () => import("./components/BoardAdmin.vue")
 const BoardModerator = () => import("./components/BoardModerator.vue")
 const BoardUser = () => import("./components/BoardUser.vue")
 const contact = () => import("./components/Contact.vue")
+const EspaceVip = () => import("./components/EspaceVip.vue")
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "home",
     component: Home,
     meta: {
@@ -19,10 +20,10 @@ const routes = [
     },
   },
   {
-    path: "/home",
-    component: Home,
+    path: "/espaceVip",
+    component: EspaceVip,
     meta: {
-      title: "Accueil - Boutique",
+      title: "Espace VIP",
     },
 
   },

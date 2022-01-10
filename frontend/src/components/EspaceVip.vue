@@ -10,7 +10,8 @@
                     <h5 class="card-title">{{ product.designation }}</h5>
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-price">Prix : {{ product.price }} €</p>
-                    <a href="/product/{{ product._id}}"  class="btn btn-primary">More infos</a>
+                    <a @click="modifyProduct" class="btn btn-success">Modifier</a>
+                    <!-- <a href="/deleteProduct/{{product._id}}"  class="btn btn-danger">Supprimer</a> -->
                   </div>
                 </div>
               </div>
@@ -22,16 +23,17 @@
 
 <script>
 import UserService from "../services/user.service";
+import axios from 'axios';
 
 export default {
-  name: "Home",
+  name: "EspaceVip",
   data() {
     return {
       products: [],
     };
   },
   mounted() {
-    UserService.getPublicContent().then(
+    UserService.getUserContent().then(
       (response) => {
         this.products = response.data;
       },
@@ -45,11 +47,30 @@ export default {
       }
     );
   },
+   computed: {
+     userId() {
+      return this.$store.state.auth.user.id;
+      
+    }
+    
+  },
+  methods: {
+      modifyProduct(){
+      let userId = this.$store.state.auth.user.id;
+      // Envoi des données avec axios
+      axios.put('http://localhost:3000/api/product/modifyProduct/61dac415c2100f9084853dd4', {userId: userId})
+      .then(resp => {
+
+    console.log(resp.data.message);
+})
+      // location.reload();
+      
+      }
+  }
 };
 </script>
 <style>
 .dimensions{
-  width: 300px;
   height: 300px;
   object-fit: cover;
 }

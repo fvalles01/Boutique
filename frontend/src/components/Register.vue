@@ -1,7 +1,8 @@
 <template>
-  <div class="col-md-12">
-    <div class="card card-container">
+  <div class="col-md-12 mt-3">
+    <!-- <div class="card card-container"> -->
       <Form @submit="handleRegister" :validation-schema="schema">
+        <h1 class="text-center">Créer un Compte </h1>
         <div v-if="!successful">
           <div class="form-group">
             <label for="username">Utilisateur</label>
@@ -20,7 +21,7 @@
           </div>
 
           <div class="form-group">
-            <button class="btn btn-primary btn-block" :disabled="loading">
+            <button class="btn btn-primary btn-block mt-3" :disabled="loading">
               <span
                 v-show="loading"
                 class="spinner-border spinner-border-sm"
@@ -39,7 +40,7 @@
         {{ message }}
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>

@@ -1,7 +1,8 @@
 <template>
-  <div class="col-md-12">
-    <div class="card card-container">
+  <div class="col-md-12 mt-3">
+    <!-- <div class="card card-container"> -->
       <Form @submit="sendMail" :validation-schema="schema">
+        <h1 class="text-center">Nous Contacter </h1>
         <div class="form-group">
           <label for="name">Votre nom :</label>
           <Field v-model="name" name="name" type="text" class="form-control" />
@@ -24,12 +25,12 @@
         </div>
         <div class="form-group">
           <label for="demande">Votre message :</label>
-          <Field v-model="demande" name="demande" type="text" class="form-control" />
+          <Field v-model="demande" id="demande" name="demande" type="text" class="form-control" />
           <ErrorMessage name="demande" class="error-feedback" />
         </div>
 
         <div class="form-group">
-          <button class="btn btn-primary btn-block" :disabled="loading">
+          <button class="btn btn-primary btn-block mt-3" :disabled="loading">
             <span
               v-show="loading"
               class="spinner-border spinner-border-sm"
@@ -45,10 +46,11 @@
         </div>
       </Form>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
+
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import axios from 'axios';

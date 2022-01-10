@@ -1,32 +1,34 @@
 <template>
-  <div class="col-md-12">
-    <div class="card card-container">
+
+  <div class="col-md-12 mt-3">
+
+    <!-- <div class="card card-container"> -->
         <Form @submit="sendProduct" :validation-schema="schema">
+          <h1 class="text-center">Ajoutez votre produit !</h1>
         <div class="form-group">
-          <label for="designation">Désignation</label>
+          <label for="designation">Désignation : </label>
           <Field v-model="designation" name="designation" type="text" class="form-control" />
           <ErrorMessage name="designation" class="error-feedback" />
         </div>
         <div class="form-group">
-          <label for="imageUrl">Mot de passe</label>
+          <label for="imageUrl">Image : </label>
           <Field  name="imageUrl" id="imageUrl" type="file" class="form-control" />
           <ErrorMessage name="imageUrl" class="error-feedback" />
         </div>
         <div class="form-group">
-          <label for="price">Prix</label>
+          <label for="price">Prix : </label>
           <Field v-model="price" name="price" type="text" class="form-control" />
           <ErrorMessage name="price" class="error-feedback" />
         </div>
         <div class="form-group">
-          <label for="description">Description</label>
+          <label for="description">Description : </label>
           <Field v-model="description" name="description" type="text" class="form-control" />
           <ErrorMessage name="description" class="error-feedback" />
         </div>
-
-
-
+        <input type="hidden" name="userId" v-model="userId">
+        
         <div class="form-group">
-          <button class="btn btn-primary btn-block" :disabled="loading">
+          <button class="btn btn-primary btn-block mt-3" :disabled="loading">
             <span
               v-show="loading"
               class="spinner-border spinner-border-sm"
@@ -41,7 +43,7 @@
           </div>
         </div>
       </Form>
-    </div>
+    
   </div>
 </template>
 
@@ -73,31 +75,41 @@ export default {
     };
   },
   computed: {
-    loggedIn() {
-      return this.$store.state.auth.status.loggedIn;
-    },
+     userId() {
+      return this.$store.state.auth.user.id;
+      
+    }
+    
   },
-  
+ 
   methods: {
-    // onSubmit(imageUrl) {
-    //   JSON.stringify(imageUrl, null, 1);
-    // },
+    
     sendProduct() {
+      
       // récupération de l'image
       let img = document.getElementById("imageUrl").files[0];
-      // Création d'un formData pour l'envoi de l'image
-
+      
+      // Création d'un formData pour l'envoi de l'image et le reste du formulaire
       let formData = new FormData();
       formData.append("designation", this.designation);
       formData.append("imageUrl", img);
       formData.append("price", this.price);
       formData.append("description", this.description);
+      formData.append("userId", this.userId);
+      console.log(formData);
       // Envoi des données avec axios
-      axios.post('http://localhost:3000/api/products/all', formData, { headers: authHeader()});
-      location.reload();
+      axios.post('http://localhost:3000/api/product/createProduct', formData, { headers: authHeader()})
+      .then(resp => {
+
+    console.log(resp.data.message);
+})
+      // location.reload();
+      
     },
     
+    
   },
+
 };
 </script>
 
