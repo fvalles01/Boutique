@@ -4,17 +4,17 @@ exports.sendMail = (req, res, next)=>{
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth:{
-            user: process.env.GMAIL_EMAIL,
-            pass: process.env.GMAIL_PASSWORD
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
         }
     });
 
     var mailOptions = {
         from: req.body.email,
-        to: 'arnaud.lyard@gmail.com',
+        to: process.env.EMAIL,
         subject: req.body.objet,
         text: req.body.demande,
-        html: "<b>Adresse mail de l'expéditeur : " + req.body.email + "</b><b>| Identité de l'expéditeur : " + req.body.name + " - " + req.body.lastname + "</b><br>" + req.body.demande + "", // html body
+        html: "<b>Adresse mail de l'expéditeur : " + req.body.email + "</b><b>| Identité de l'expéditeur : " + req.body.name + "  " + req.body.lastname + "</b><br>" + req.body.demande + "", // html body
     };
     transporter.sendMail(mailOptions, (err,infos)=>{
         if(err){

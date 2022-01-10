@@ -37,7 +37,7 @@ exports.signup = (req, res) => {
               return;
             }
 
-            res.send({ message: "User was registered successfully!" });
+            res.send({ message: "L'utilisateur a été enregistré avec succès !" });
           });
         }
       );
@@ -55,7 +55,7 @@ exports.signup = (req, res) => {
             return;
           }
 
-          res.send({ message: "User was registered successfully!" });
+          res.send({ message: " L'utilisateur a été enregistré avec succès !" });
         });
       });
     }
@@ -74,7 +74,7 @@ exports.signin = (req, res) => {
       }
 
       if (!user) {
-        return res.status(404).send({ message: "User Not found." });
+        return res.status(404).send({ message: "Utilisateur non trouvé ! " });
       }
 
       var passwordIsValid = bcrypt.compareSync(
@@ -85,7 +85,7 @@ exports.signin = (req, res) => {
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,
-          message: "Invalid Password!"
+          message: "'Mot de passe incorrect ! '"
         });
       }
 
