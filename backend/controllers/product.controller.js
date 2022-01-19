@@ -44,11 +44,11 @@ exports.getProductsByUserId = (req, res, next) => {
 exports.modifyProduct = (req, res, next) => {
 
     const id = req.params.id;
-    Product.findOne({_id: id, userId: req.body.userId}, (err) =>{
-        if(err){
-            console.log(err)
-            return res.redirect('/login')
-        }else {
+    // Product.findOne({_id: id, userId: req.body.userId}, (err) =>{
+    //     if(err){
+    //         console.log(err)
+    //         return res.redirect('/login')
+    //     }else {
             let product = req.body;
             if(req.file){
                 product.imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
@@ -74,25 +74,14 @@ exports.modifyProduct = (req, res, next) => {
                         error: err
                     })
                 }
-                return res.status(200).json({
-                    status: 200,
+                return res.status(201).json({
+                    status: 201,
                     message: 'Product Updated !'
                 })
             })
-        }
-    })
+    //     }
+    // })
    
-
-
-
-    // const productObject = req.file ?
-    //     { 
-    //         ...req.body,
-    //         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    //     } : { ...req.body};
-    // Product.updateOne({ _id: req.params.id}, {...productObject, _id: req.params.id })
-    // .then(() => res.status(200).json({message: 'Objet modifié !'}))
-    // .catch(error => res.status(400).json({error}));
 };
 
 exports.deleteProduct = (req, res, next) => {
@@ -107,25 +96,7 @@ exports.deleteProduct = (req, res, next) => {
         })
         .catch(error => res.status(500).json({ error }));
     
-    
-    //     Thing.findOne({ _id: req.params.id}).then(
-    //     (thing) => {
-    //         if(!thing) {
-    //             return res.status(404).json({
-    //                 error: new Error('Objet non trouvé !')
-    //         });
-    //         }
-    //         if (thing.userId !== req.auth.userId){
-    //             return res.status(401).json({
-    //                 error: new Error ('Requete non autorisé')
-    //             });
-    //         }
-            
-    //         Thing.deleteOne({ _id: req.params.id})
-    //         .then(() => res.status(200).json({message: 'Objet supprimé !'}))
-    //         .catch(error => res.status(400).json({error}));
-    //     }
-    // )
+
 
 };
 
