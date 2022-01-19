@@ -1,21 +1,18 @@
 <template>
   <div class="container mt-3">
-    <header class="jumbotron">
-  
-      <h1 class="text-center">
-         Votre Profile
-      </h1>
-    </header>
-    <p>
-      <strong>Identifiant :</strong>
-      {{currentUser.username}}
-    </p>
-    <p>
-      <strong>Email :</strong>
-      {{currentUser.email}}
-    </p>
-    <strong>Votre droit d'accès :</strong>
-      <p v-for="role in currentUser.roles" :key="role">{{role}}</p>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+      <h2 class="text-center mb-3">Votre Profil</h2>
+      <ul>
+        <li>Username : {{currentUser.username}} </li>
+        <li>Email : {{currentUser.email}} </li>
+        <li>ID USER : {{currentUser.id}} </li>
+        <li v-for="role in currentUser.roles" :key="role"> Votre droit d'accès : {{role}} </li>
+      </ul>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
   </div>
 </template>
 
@@ -34,3 +31,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+div ul {
+  list-style-type:none;
+  margin-top: 50px;
+}
+div ul li{
+  margin-bottom:15px;
+  font-size: 20px;
+}
+</style>

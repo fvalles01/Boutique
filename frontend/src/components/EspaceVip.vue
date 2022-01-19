@@ -2,20 +2,46 @@
   <div class="container mt-3">
     <header class="jumbotron">
       <div class="container">
+            <div>
+                <a href="/user" class="btn btn-primary mb-3">Nouveau produit</a>
+            </div>
             <div class="row">
               <div v-for="product in products" :key="product._id" class="col12 col-md-4">
                 <div class="card m-2">
-                  <img :src="product.imageUrl" class="card-img-top dimensions" alt="image du Produit"/>
+                  <img :src="product.imageUrl" :id="product._id" class="card-img-top dimensions" alt="image du Produit"/>
                   <div class="card-body">
                     <h5 class="card-title">{{ product.designation }}</h5>
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-price">Prix : {{ product.price }} €</p>
-                    <a @click="modifyProduct" class="btn btn-success">Modifier</a>
-                    <!-- <a href="/deleteProduct/{{product._id}}"  class="btn btn-danger">Supprimer</a> -->
+                   
+                    <a :href="'/modifyProduct/'+product._id"  class="btn btn-outline-success mr-3 buttonSep">Modifier</a>
+                    <button data-bs-toggle="modal" :data-id= "product._id" :data-bs-target="'#deleteArticleModal'+product._id"  class="btn btn-outline-danger buttonSep">Supprimer</button>
+                      <!-- Modal -->
+                  <div class="modal fade" :id="'deleteArticleModal'+product._id" tabindex="-1" aria-labelledby="deleteArticleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression du produit !</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Êtes-vous sûr de vouloir supprimer ce produit : <strong>{{product.designation}}</strong> ?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <button @click="deleteUserProduct(product._id)" class="btn btn-primary">Confirmer</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                
                   </div>
                 </div>
               </div>
+              
             </div>
+
           </div>
     </header>
   </div>
@@ -24,7 +50,6 @@
 <script>
 import UserService from "../services/user.service";
 import axios from 'axios';
-
 export default {
   name: "EspaceVip",
   data() {
@@ -32,8 +57,9 @@ export default {
       products: [],
     };
   },
+  
   mounted() {
-    UserService.getUserContent().then(
+    UserService.getUserProducts().then(
       (response) => {
         this.products = response.data;
       },
@@ -44,8 +70,11 @@ export default {
             error.response.data.message) ||
           error.message ||
           error.toString();
+          
       }
+      
     );
+  
   },
    computed: {
      userId() {
@@ -54,25 +83,27 @@ export default {
     }
     
   },
-  methods: {
-      modifyProduct(){
-      let userId = this.$store.state.auth.user.id;
-      // Envoi des données avec axios
-      axios.put('http://localhost:3000/api/product/modifyProduct/61dac415c2100f9084853dd4', {userId: userId})
-      .then(resp => {
-
-    console.log(resp.data.message);
-})
-      // location.reload();
-      
-      }
+  methods:{
+   
+   async deleteUserProduct(id){
+    
+      await axios.delete('http://localhost:3000/api/product/deleteProduct/'+id)
+           .then((res) => {
+                console.log(res.data.message)
+            })
+           .catch((err) => console.log(err));
+           location.reload();
   }
+  },
 };
 </script>
-<style>
+<style scoped>
 .dimensions{
   height: 300px;
   object-fit: cover;
+}
+.buttonSep{
+  margin: 5px 5px 0px 0px;
 }
 
 

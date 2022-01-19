@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from "./store";
 
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import { vfmPlugin } from 'vue-final-modal'
 
-createApp(App).use(router).use(store).mount('#app')
+createApp(App).use(router).use(store).use(vfmPlugin).mount('#app')

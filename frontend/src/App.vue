@@ -3,7 +3,7 @@
     <header>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="container-fluid">
-        <a href="/home" class="navbar-brand">Boutique en ligne</a>
+        <a href="/" class="navbar-brand">Boutique en ligne</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -39,17 +39,17 @@
           </ul>
           <div v-if="!currentUser" class="navbar-nav ml-auto">
             <li class="nav-item">
-              <router-link to="/login" class="btn btn-success m-1">
+              <router-link to="/login" class="btn btn-outline-success m-1">
                 Connexion
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/register" class="btn btn-primary m-1">
+              <router-link to="/register" class="btn btn-outline-primary m-1">
                 Inscription
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/contact" class="nav-link">
+              <router-link to="/contact" class="btn btn-outline-primary m-1">
                 Contact
               </router-link>
             </li>
@@ -61,10 +61,10 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary m-1" @click.prevent="logOut"> Déconnexion </a>
+              <a class="btn btn-outline-primary m-1" @click.prevent="logOut"> Logout </a>
             </li>
             <li class="nav-item">
-              <router-link to="/contact" class="nav-link">
+              <router-link to="/contact" class="btn btn-outline-primary m-1">
                 Contact
               </router-link>
             </li>

@@ -1,9 +1,11 @@
 <template>
-  <div class="col-md-12 mt-3">
-    <!-- <div class="card card-container"> -->
-      <Form @submit="handleLogin" :validation-schema="schema">
-    <p class="text-center">You don't have an account ? <a href="/register">Please click here to signup ! </a></p>
-        <div class="form-group">
+ 
+    <div class="row mt-3">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+         <Form @submit="handleLogin" :validation-schema="schema">
+          <p class="text-center mb-3">You don't have an account ? <a href="/register">Please click here to signup ! </a></p>
+          <div class="form-group">
           <label for="username">Utilisateur</label>
           <Field name="username" type="text" class="form-control" />
           <ErrorMessage name="username" class="error-feedback" />
@@ -30,8 +32,11 @@
           </div>
         </div>
       </Form>
+      </div>
+      <div class="col-md-2"></div>
     </div>
-  <!-- </div> -->
+
+
 </template>
 
 <script>

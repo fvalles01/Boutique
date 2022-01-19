@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import Home from "./components/Home.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
+import modifyProduct from "./components/modifyProduct.vue"
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")
@@ -12,7 +13,7 @@ const EspaceVip = () => import("./components/EspaceVip.vue")
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
     name: "home",
     component: Home,
     meta: {
@@ -21,6 +22,8 @@ const routes = [
   },
   {
     path: "/espaceVip",
+    name: "espaceVip",
+    props: true,
     component: EspaceVip,
     meta: {
       title: "Espace VIP",
@@ -85,6 +88,16 @@ const routes = [
     },
     // lazy-loaded
     component: contact,
+  },
+  {
+    path: "/modifyProduct/:id",
+    name: "modifyProduct",
+    meta: {
+      title: "modifyProduct",
+    },
+    props: true,
+    // lazy-loaded
+    component: modifyProduct,
   }
 
 ];

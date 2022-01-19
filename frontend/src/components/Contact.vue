@@ -1,8 +1,10 @@
 <template>
-  <div class="col-md-12 mt-3">
-    <!-- <div class="card card-container"> -->
-      <Form @submit="sendMail" :validation-schema="schema">
-        <h1 class="text-center">Nous Contacter </h1>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <Form @submit="sendMail" :validation-schema="schema">
+        <h2 class="text-center">Nous Contacter </h2>
         <div class="form-group">
           <label for="name">Votre nom :</label>
           <Field v-model="name" name="name" type="text" class="form-control" />
@@ -25,7 +27,7 @@
         </div>
         <div class="form-group">
           <label for="demande">Votre message :</label>
-          <Field v-model="demande" id="demande" name="demande" type="text" class="form-control" />
+          <textarea v-model="demande" id="demande" name="demande" type="text" class="form-control" />
           <ErrorMessage name="demande" class="error-feedback" />
         </div>
 
@@ -45,8 +47,10 @@
           </div>
         </div>
       </Form>
+      </div>
+      <div class="col-md-2"></div>
     </div>
-  <!-- </div> -->
+  </div>
 </template>
 
 <script>

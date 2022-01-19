@@ -1,15 +1,21 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-
-const API_URL = 'http://localhost:3000/api/';
+const API_URL = 'http://localhost:3000/api/product/';
 
 class UserService {
-  getPublicContent() {
-    return axios.get(API_URL + 'product/getAllProducts');
+  getPublicProducts() {
+    return axios.get(API_URL + 'getAllProducts');
   }
+                                         
+  async getUserOneProduct(id) {  
+     return await axios.get(API_URL + 'getOneProduct/'+id);
+  }
+  // deleteUserProduct(id){
+  //   return axios.get(API_URL + 'deleteProduct/'+id);
+  // }
 
-  getUserContent() {
-    return axios.get(API_URL + 'product/getProductsByUserId', { headers: authHeader()} );
+  async getUserProducts() {
+    return await axios.get(API_URL + 'getProductsByUserId', { headers: authHeader()} );
   }
 
   getUserBoard() {
