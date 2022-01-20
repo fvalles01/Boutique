@@ -10,7 +10,6 @@
                     <h5 class="card-title">{{ product.designation }}</h5>
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-price">Prix : {{ product.price }} €</p>
-                    <a href="/product/{{ product._id}}"  class="btn btn-primary">Plus de détails...</a>
                   </div>
                 </div>
               </div>

@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
           <label for="demande">Votre message :</label>
-          <textarea v-model="demande" id="demande" name="demande" type="text" class="form-control" />
+          <Field v-model="demande" id="demande" name="demande" type="text" class="form-control" />
           <ErrorMessage name="demande" class="error-feedback" />
         </div>
 

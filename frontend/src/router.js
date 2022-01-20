@@ -7,7 +7,7 @@ import modifyProduct from "./components/modifyProduct.vue"
 const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")
 const BoardModerator = () => import("./components/BoardModerator.vue")
-const BoardUser = () => import("./components/BoardUser.vue")
+const addProduct = () => import("./components/addProduct.vue")
 const contact = () => import("./components/Contact.vue")
 const EspaceVip = () => import("./components/EspaceVip.vue")
 
@@ -78,7 +78,7 @@ const routes = [
       title: "Utilisateur",
     },
     // lazy-loaded
-    component: BoardUser,
+    component: addProduct,
   },
   {
     path: "/contact",

@@ -4,7 +4,7 @@
       <div class="col-md-2"></div>
       <div class="col-md-8">
          <Form @submit="handleLogin" :validation-schema="schema">
-          <p class="text-center mb-3">You don't have an account ? <a href="/register">Please click here to signup ! </a></p>
+          <p class="text-center mb-3">Vous n'avez pas encore de compte ? <a href="/register">Veuillez cliquer pour vous inscrire ! </a></p>
           <div class="form-group">
           <label for="username">Utilisateur</label>
           <Field name="username" type="text" class="form-control" />

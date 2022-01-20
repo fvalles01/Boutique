@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a href="/" class="navbar-brand">Boutique en ligne</a>
         <button
@@ -39,17 +39,17 @@
           </ul>
           <div v-if="!currentUser" class="navbar-nav ml-auto">
             <li class="nav-item">
-              <router-link to="/login" class="btn btn-outline-success m-1">
+              <router-link to="/login" class="btn btn-outline-success m-1 navbtn">
                 Connexion
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/register" class="btn btn-outline-primary m-1">
+              <router-link to="/register" class="btn btn-outline-primary m-1 navbtn">
                 Inscription
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/contact" class="btn btn-outline-primary m-1">
+              <router-link to="/contact" class="btn btn-outline-primary m-1 navbtn">
                 Contact
               </router-link>
             </li>
@@ -61,10 +61,10 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <a class="btn btn-outline-primary m-1" @click.prevent="logOut"> Logout </a>
+              <a class="btn btn-outline-primary m-1 navbtn" @click.prevent="logOut"> Déconnexion </a>
             </li>
             <li class="nav-item">
-              <router-link to="/contact" class="btn btn-outline-primary m-1">
+              <router-link to="/contact" class="btn btn-outline-primary m-1 navbtn">
                 Contact
               </router-link>
             </li>
@@ -119,5 +119,8 @@ export default {
 <style scoped>
 .nav-item a{
   cursor: pointer;
+}
+.navbtn{
+  width: 150px;
 }
 </style>

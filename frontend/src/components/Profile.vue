@@ -5,10 +5,8 @@
       <div class="col-md-8">
       <h2 class="text-center mb-3">Votre Profil</h2>
       <ul>
-        <li>Username : {{currentUser.username}} </li>
-        <li>Email : {{currentUser.email}} </li>
-        <li>ID USER : {{currentUser.id}} </li>
-        <li v-for="role in currentUser.roles" :key="role"> Votre droit d'accès : {{role}} </li>
+        <li>Nom d'utilisateur : <strong>{{currentUser.username}}</strong> </li>
+        <li>Email : <strong>{{currentUser.email}}</strong> </li>
       </ul>
       </div>
       <div class="col-md-2"></div>

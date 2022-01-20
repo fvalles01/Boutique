@@ -14,7 +14,6 @@
     "form-data": "^4.0.0",
     "vee-validate": "^4.5.7",
     "vue": "^3.2.27",
-    "vue-final-modal": "^3.4.3",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.2",
     "yup": "^0.32.11"
