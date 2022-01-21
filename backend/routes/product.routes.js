@@ -18,11 +18,8 @@ module.exports = function(app) {
 app.get('/api/product/getAllProducts', productController.getAllProducts);
 app.get('/api/product/getProductsByUserId', [authJwt.verifyToken], productController.getProductsByUserId);
 app.post('/api/product/createProduct', [authJwt.verifyToken], multer, productController.createProduct);
-app.put('/api/product/modifyProduct/:id', multer, productController.modifyProduct);
-app.get('/api/product/getOneProduct/:id', productController.getOneProduct);
-app.delete('/api/product/deleteProduct/:id', productController.deleteProduct);
-
-/*Get products by userID */
-// app.get('/user/:id/products', authJwt, productController.getProductByUser);
+app.put('/api/product/modifyProduct/:id', [authJwt.verifyToken], multer, productController.modifyProduct);
+app.get('/api/product/getOneProduct/:id', [authJwt.verifyToken], productController.getOneProduct);
+app.delete('/api/product/deleteProduct/:id', [authJwt.verifyToken], productController.deleteProduct);
 
 }

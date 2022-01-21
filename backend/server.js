@@ -2,7 +2,7 @@ const http = require('http');
 // const app = require('./app');
 const express = require('express');
 const bodyParser = require('body-parser');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const path = require ('path');
 const dotenv = require('dotenv').config();
 

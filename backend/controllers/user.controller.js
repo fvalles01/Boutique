@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 
   exports.allAccess = (req, res) => {
-    res.status(200).send("All Access.");
+   res.status(200).send("");
     
   };
 

@@ -9,6 +9,7 @@ const productSchema = mongoose.Schema({
         ref: 'User'
     },
     description: { type: String, required: true },
+    publishedAt: {type: Date, required: true},
 });
 
 module.exports = mongoose.model('Product', productSchema);

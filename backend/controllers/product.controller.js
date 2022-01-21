@@ -13,6 +13,7 @@ exports.createProduct = (req, res, next) => {
     const product = new Product({
         ...productObject,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+        publishedAt: Date.now()
     });
     product.save()
         .then( ()=> res.status(201).json({ message: 'Objet enregisté' }))
@@ -76,8 +77,9 @@ exports.modifyProduct = (req, res, next) => {
                 }
                 return res.status(201).json({
                     status: 201,
-                    message: 'Product Updated !'
-                })
+                    message: 'OK!'
+                })  
+
             })
     //     }
     // })
