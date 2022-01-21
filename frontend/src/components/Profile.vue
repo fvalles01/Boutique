@@ -3,11 +3,17 @@
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-8">
-      <h2 class="text-center mb-3">Votre Profil</h2>
-      <ul>
-        <li>Nom d'utilisateur : <strong>{{currentUser.username}}</strong> </li>
-        <li>Email : <strong>{{currentUser.email}}</strong> </li>
-      </ul>
+        <h2 class="text-center mb-3">Votre Profil</h2>
+        <ul>
+          <li>
+            Nom utilisateur : <strong>{{ currentUser.username }} </strong>
+          </li>
+          <li>
+            Email : <strong>{{ currentUser.email }} </strong>
+          </li>
+          <!-- <li>ID USER : {{currentUser.id}} </li>
+        <li v-for="role in currentUser.roles" :key="role"> Votre droit d'accès : {{role}} </li> -->
+        </ul>
       </div>
       <div class="col-md-2"></div>
     </div>
@@ -16,26 +22,26 @@
 
 <script>
 export default {
-  name: 'Profile',
+  name: "Profile",
   computed: {
     currentUser() {
       return this.$store.state.auth.user;
-    }
+    },
   },
   mounted() {
     if (!this.currentUser) {
-      this.$router.push('/login');
+      this.$router.push("/login");
     }
-  }
+  },
 };
 </script>
 <style scoped>
 div ul {
-  list-style-type:none;
+  list-style-type: none;
   margin-top: 50px;
 }
-div ul li{
-  margin-bottom:15px;
+div ul li {
+  margin-bottom: 15px;
   font-size: 20px;
 }
 </style>

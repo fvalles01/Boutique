@@ -3,7 +3,7 @@
     <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a href="/" class="navbar-brand">Boutique en ligne</a>
+        <a href="/home" class="navbar-brand">Boutique en ligne</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -39,32 +39,32 @@
           </ul>
           <div v-if="!currentUser" class="navbar-nav ml-auto">
             <li class="nav-item">
-              <router-link to="/login" class="btn btn-outline-success m-1 navbtn">
+              <router-link to="/login" class="btn btn-outline-success m-1 bouton">
                 Connexion
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/register" class="btn btn-outline-primary m-1 navbtn">
+              <router-link to="/register" class="btn btn-outline-primary m-1 bouton">
                 Inscription
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/contact" class="btn btn-outline-primary m-1 navbtn">
+              <router-link to="/contact" class="btn btn-outline-primary m-1 bouton">
                 Contact
               </router-link>
             </li>
           </div>
           <div v-if="currentUser" class="navbar-nav ml-auto">
             <li class="nav-item">
-              <router-link to="/profile" class="nav-link">
+              <router-link to="/profile" class="btn btn-outline-primary m-1 bouton">
                 {{ currentUser.username }}
               </router-link>
             </li>
             <li class="nav-item">
-              <a class="btn btn-outline-primary m-1 navbtn" @click.prevent="logOut"> Déconnexion </a>
+              <a class="btn btn-outline-primary m-1 bouton" @click.prevent="logOut"> Deconnexion </a>
             </li>
             <li class="nav-item">
-              <router-link to="/contact" class="btn btn-outline-primary m-1 navbtn">
+              <router-link to="/contact" class="btn btn-outline-primary m-1 bouton">
                 Contact
               </router-link>
             </li>
@@ -120,7 +120,7 @@ export default {
 .nav-item a{
   cursor: pointer;
 }
-.navbtn{
+.bouton{
   width: 150px;
 }
 </style>

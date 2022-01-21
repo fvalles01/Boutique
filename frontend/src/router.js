@@ -2,18 +2,20 @@ import { createWebHistory, createRouter } from "vue-router";
 import Home from "./components/Home.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
-import modifyProduct from "./components/modifyProduct.vue"
+import modifyProduct from "./components/modifyProduct.vue";
+import productInfo from "./components/productInfo.vue";
+
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")
 const BoardModerator = () => import("./components/BoardModerator.vue")
-const addProduct = () => import("./components/addProduct.vue")
+const BoardUser = () => import("./components/BoardUser.vue")
 const contact = () => import("./components/Contact.vue")
 const EspaceVip = () => import("./components/EspaceVip.vue")
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "home",
     component: Home,
     meta: {
@@ -78,7 +80,7 @@ const routes = [
       title: "Utilisateur",
     },
     // lazy-loaded
-    component: addProduct,
+    component: BoardUser,
   },
   {
     path: "/contact",
@@ -98,6 +100,16 @@ const routes = [
     props: true,
     // lazy-loaded
     component: modifyProduct,
+  },
+  {
+    path: "/productInfo/:id",
+    name: "productInfo",
+    meta: {
+      title: "productInfo",
+    },
+    props: true,
+    
+    component: productInfo,
   }
 
 ];

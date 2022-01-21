@@ -2,19 +2,30 @@
   <div class="container mt-3">
     <header class="jumbotron">
       <div class="container">
-            <div class="row">
-              <div v-for="product in products" :key="product._id" class="col12 col-md-4">
-                <div class="card m-2">
-                  <img :src="product.imageUrl" class="card-img-top dimensions" alt="image du Produit"/>
-                  <div class="card-body">
-                    <h5 class="card-title">{{ product.designation }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
-                    <p class="card-price">Prix : {{ product.price }} €</p>
-                  </div>
-                </div>
+        <div class="row">
+          <div
+            v-for="product in products"
+            :key="product._id"
+            class="col12 col-md-4"
+          >
+            <div class="card m-2">
+              <img
+                :src="product.imageUrl"
+                class="card-img-top dimensions"
+                alt="image du Produit"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ product.designation }}</h5>
+                <!-- <p class="card-text">{{ product.description }}</p> -->
+                <p class="card-price">Prix : {{ product.price }} €</p>
+                <a :href="'/productInfo/'+product._id" class="btn btn-primary"
+                  >Plus de détails...</a
+                >
               </div>
             </div>
           </div>
+        </div>
+      </div>
     </header>
   </div>
 </template>
@@ -47,10 +58,8 @@ export default {
 };
 </script>
 <style scoped>
-.dimensions{
+.dimensions {
   height: 300px;
   object-fit: cover;
 }
-
-
 </style>

@@ -1,11 +1,13 @@
 <template>
- 
-    <div class="row mt-3">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-         <Form @submit="handleLogin" :validation-schema="schema">
-          <p class="text-center mb-3">Vous n'avez pas encore de compte ? <a href="/register">Veuillez cliquer pour vous inscrire ! </a></p>
-          <div class="form-group">
+  <div class="row mt-3">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <Form @submit="handleLogin" :validation-schema="schema">
+        <p class="text-center mb-3">
+          Vous n'avez pas de compte ?
+          <a href="/register">Merci de vous inscrire ! </a>
+        </p>
+        <div class="form-group">
           <label for="username">Utilisateur</label>
           <Field name="username" type="text" class="form-control" />
           <ErrorMessage name="username" class="error-feedback" />
@@ -32,11 +34,9 @@
           </div>
         </div>
       </Form>
-      </div>
-      <div class="col-md-2"></div>
     </div>
-
-
+    <div class="col-md-2"></div>
+  </div>
 </template>
 
 <script>

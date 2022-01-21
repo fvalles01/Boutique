@@ -1,10 +1,9 @@
 <template>
-
-    <div class="row mt-3">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <Form @submit="handleRegister" :validation-schema="schema">
-        <h2 class="text-center mb-3">Créer un Compte </h2>
+  <div class="row mt-3">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <Form @submit="handleRegister" :validation-schema="schema">
+        <h2 class="text-center mb-3">Créer un Compte</h2>
         <div v-if="!successful">
           <div class="form-group">
             <label for="username">Utilisateur</label>
@@ -41,10 +40,9 @@
       >
         {{ message }}
       </div>
-      </div>
-      <div class="col-md-2"></div>
     </div>
-
+    <div class="col-md-2"></div>
+  </div>
 </template>
 
 <script>
